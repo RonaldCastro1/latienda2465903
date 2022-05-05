@@ -72,12 +72,20 @@ Route::get('paises', function(){
         "Brazil" => [
             "capital" => "Brasilia",
             "moneda" => "Real brasileño",
-            "poblacion" => 212
+            "poblacion" => 212,
+            "ciudades" => [
+                "arequipa",
+                "trujillo"
+            ]
         ],
         "Mexico" => [
             "capital" => "Ciudad de mexico",
             "moneda" => "Peso mexicano",
-            "poblacion" => 128
+            "poblacion" => 128,
+            "ciudades" => [
+                "arequipa",
+                "trujillo"
+            ]
         ]
       ]
     ];
