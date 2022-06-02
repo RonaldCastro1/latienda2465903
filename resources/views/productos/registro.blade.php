@@ -6,10 +6,10 @@
 </div>
 @endif
 <div class="row">
-    <h1 class="#f57c00 orange-text darken-2">Nuevo Producto</h1>
+    <h1 class="#039be5 light-blue-text darken-1">Nuevo Producto</h1>
 </div>
 <div class="row">
-    <form method="POST" action="{{route('productos.store')}}" class="col s12" >
+    <form method="POST" action="{{route('productos.store')}}" class="col s12" enctype="multipart/form-data">
     @csrf
         <div class="row">
             <div class="input-field col s8">
@@ -70,7 +70,11 @@
                     <span>Imagen de producto</span>
                     <input type="file" name="imagen">
                 </div>
+                <div class="file-path-wrapper">
+                    <input type="text" class="file-path">
+                </div>
             </div>
+            <span class="red-text">{{$errors->first('imagen')}}</span>
         </div>
         <div class="row">
             <button class="btn waves-effect #f57c00 orange darken-2" type="submit">

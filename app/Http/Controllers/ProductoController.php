@@ -45,23 +45,27 @@ class ProductoController extends Controller
      */
     public function store(Request $r)
     {
-        //Recibir datos
-/*         echo "<pre>";
-        var_dump($r->all());
-        echo "</pre>"; */
+        //Analizar la input data "imagen"
+
+        
+    
 
         //Reglas de validacion de campos
         $reglas = [
             "nombre"=>'required|alpha',
-            "desc"=>'',
+            "desc"=>'required|min:20|max:50',
             "precio"=>'numeric|required',
             "marca"=>'required|numeric',
-            "categoria"=>'required|numeric'
+            "categoria"=>'required|numeric',
+            "imagen"=> 'required|image'
         ];
         $mensajes = [
             "required" => "El campo es obligatorio",
+            "min"=>"Minimo 20 caracteres",
+            "max"=>"Maximo 50 caracteres",
             "alpha" => "Solo letras",
-            "numeric" => "Solo puede contener numeros"
+            "numeric" => "Solo puede contener numeros",
+            "image"=> "Solo se puede tipo imagen"
         ];
         //Crear objeto de validacion
         $validation = Validator::make($r->all(),$reglas,$mensajes);
@@ -72,18 +76,26 @@ class ProductoController extends Controller
             ->withInput();
         }
         else{
+        //Acceder a propiedades del archivo cargado
+        $archivo= $r->imagen;
+        $nombre_archivo= $archivo->getClientOriginalName();
+        //Establecer la ubicacion donde se almacenara el archivo
+        $ruta=public_path()."/img/";
+        //mover el archivo
+        $archivo->move($ruta, $nombre_archivo);
         //Crear nuevo producto<<entity>>
         $p =new Producto;
         //Asignar valores a los atributos
         $p->nombre = $r->nombre;
         $p->descripcion = $r->desc;
+        $p->imagen=$nombre_archivo;
         $p->precio = $r->precio;
         $p->marca_id = $r->marca;
         $p->categoria_id = $r->categoria;
         //Guardar en la bd
         $p->save();
         return redirect('productos/create')
-            ->with('mensaje',"Producto registrado");
+            ->with('mensaje',"Producto registrado con exito");
         }
     }
 
