@@ -8,21 +8,22 @@
     <div class="card-image waves-effect waves-block waves-light">
       <img class="activator" width="500" height="400" 
       @if($producto->imagen=== null) 
-      src="{{asset('img/no_disponible.jpg')}}" 
-      @else src="{{asset('img/'.$producto->imagen)}}"
+      src="{{ asset('img/no_disponible.jpg')}}" 
+      @else 
+      src="{{ asset('img/'.$producto->imagen)}}"
       @endif 
       />
     </div>
-    <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">{{$producto->nombre}}<i class="material-icons right">Ver detalles ...</i></span>
-      <p><a href="#">This is a link</a></p>
+    <div class="card-content grey darken-1">
+      <span class="card-title activator black-text text-darken-4"><b>{{$producto->nombre}}</b><i class="material-icons right  white-text"><b>Detalles</b></i></span>
+      <p><a href="{{url('productos/'.$producto->id)}}">Añadir a carrito</a></p>
     </div>
-    <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">{{$producto->nombre}}<i class="material-icons right">close</i></span>
+    <div class="card-reveal lighten-4 grey darken-1">
+      <span class="card-title text-darken-4">{{$producto->nombre}}<i class="material-icons right  white-text">Cerrar</i></span>
       <ul>
       <li>Descripcion: {{$producto->desc}}</li>
       <li>Precio: {{$producto->precio}}</li>   
-      <li>Categoria: {{$producto->categoria_id}}</li> 
+      <li>Categoria: {{$producto->categoria->nombre}}</li> 
       </ul>
     </div>
   </div>

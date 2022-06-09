@@ -111,7 +111,11 @@ public function index()
      */
     public function show($producto)
     {
-        echo "Detalles de producto $producto";
+        //selecionar el producto con id
+        $producto = Producto::find($producto);
+        //mostrar la vista de detalles llevandole el producto seleccionado
+        return view('productos.show')
+                ->with('producto', $producto);
     }
 
     /**

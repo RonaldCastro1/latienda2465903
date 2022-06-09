@@ -8,12 +8,13 @@
     <title>Tienda PHP</title>
 </head>
 <body>
-<nav class=" blue-grey">
+<nav class=" grey darken-1">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">La Tienda PHP</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="badges.html">Productos</a></li>
-        <li><a href="collapsible.html">Pedidos</a></li>
+        <li><a href="/productos">Catalogo</a></li>
+        <li><a href="/productos/create">Crear producto</a></li>
+        <li><a href="/carrito">Carrito</a></li>
       </ul>
     </div>
   </nav>

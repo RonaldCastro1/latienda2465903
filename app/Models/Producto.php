@@ -15,5 +15,8 @@ class Producto extends Model
     public function categoria(){
         return $this->belongsto(Categoria::class);
     }
+    public function marca(){
+        return $this->belongsto(Marca::class);
+    }
 
 }
