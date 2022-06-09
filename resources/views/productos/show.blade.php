@@ -46,7 +46,7 @@
             </button>
         </div>
         <input type="hidden" name="prod_id" value="{{$producto->id}}">
-        <input type="hidden" name="prod_name" value="{{$producto->name}}">
+        <input type="hidden" name="prod_name" value="{{$producto->nombre}}">
         </form>
     </div>
 </div>
